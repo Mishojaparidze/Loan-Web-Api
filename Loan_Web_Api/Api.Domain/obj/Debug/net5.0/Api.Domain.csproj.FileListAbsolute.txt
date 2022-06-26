@@ -1,0 +1,15 @@
+C:\Users\misho\source\repos\Homeworks\Loan_Web_Api\Api.Domain\bin\Debug\net5.0\Api.Domain.deps.json
+C:\Users\misho\source\repos\Homeworks\Loan_Web_Api\Api.Domain\bin\Debug\net5.0\Api.Domain.runtimeconfig.json
+C:\Users\misho\source\repos\Homeworks\Loan_Web_Api\Api.Domain\bin\Debug\net5.0\Api.Domain.runtimeconfig.dev.json
+C:\Users\misho\source\repos\Homeworks\Loan_Web_Api\Api.Domain\bin\Debug\net5.0\Api.Domain.dll
+C:\Users\misho\source\repos\Homeworks\Loan_Web_Api\Api.Domain\bin\Debug\net5.0\Api.Domain.pdb
+C:\Users\misho\source\repos\Homeworks\Loan_Web_Api\Api.Domain\obj\Debug\net5.0\Api.Domain.csproj.AssemblyReference.cache
+C:\Users\misho\source\repos\Homeworks\Loan_Web_Api\Api.Domain\obj\Debug\net5.0\Api.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\misho\source\repos\Homeworks\Loan_Web_Api\Api.Domain\obj\Debug\net5.0\Api.Domain.AssemblyInfoInputs.cache
+C:\Users\misho\source\repos\Homeworks\Loan_Web_Api\Api.Domain\obj\Debug\net5.0\Api.Domain.AssemblyInfo.cs
+C:\Users\misho\source\repos\Homeworks\Loan_Web_Api\Api.Domain\obj\Debug\net5.0\Api.Domain.csproj.CoreCompileInputs.cache
+C:\Users\misho\source\repos\Homeworks\Loan_Web_Api\Api.Domain\obj\Debug\net5.0\Api.Domain.dll
+C:\Users\misho\source\repos\Homeworks\Loan_Web_Api\Api.Domain\obj\Debug\net5.0\refint\Api.Domain.dll
+C:\Users\misho\source\repos\Homeworks\Loan_Web_Api\Api.Domain\obj\Debug\net5.0\Api.Domain.pdb
+C:\Users\misho\source\repos\Homeworks\Loan_Web_Api\Api.Domain\obj\Debug\net5.0\Api.Domain.genruntimeconfig.cache
+C:\Users\misho\source\repos\Homeworks\Loan_Web_Api\Api.Domain\obj\Debug\net5.0\ref\Api.Domain.dll
