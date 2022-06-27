@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Api.Data.Migrations
 {
-    public partial class mig400 : Migration
+    public partial class Mig777 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

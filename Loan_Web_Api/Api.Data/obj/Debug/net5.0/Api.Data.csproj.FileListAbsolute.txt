@@ -16,3 +16,21 @@ C:\Users\misho\source\repos\Homeworks\Loan_Web_Api\Api.Data\obj\Debug\net5.0\ref
 C:\Users\misho\source\repos\Homeworks\Loan_Web_Api\Api.Data\obj\Debug\net5.0\Api.Data.pdb
 C:\Users\misho\source\repos\Homeworks\Loan_Web_Api\Api.Data\obj\Debug\net5.0\Api.Data.genruntimeconfig.cache
 C:\Users\misho\source\repos\Homeworks\Loan_Web_Api\Api.Data\obj\Debug\net5.0\ref\Api.Data.dll
+C:\Users\misho\source\repos\Loan app\Loan_Web_Api\Api.Data\bin\Debug\net5.0\Api.Data.deps.json
+C:\Users\misho\source\repos\Loan app\Loan_Web_Api\Api.Data\bin\Debug\net5.0\Api.Data.runtimeconfig.json
+C:\Users\misho\source\repos\Loan app\Loan_Web_Api\Api.Data\bin\Debug\net5.0\Api.Data.runtimeconfig.dev.json
+C:\Users\misho\source\repos\Loan app\Loan_Web_Api\Api.Data\bin\Debug\net5.0\Api.Data.dll
+C:\Users\misho\source\repos\Loan app\Loan_Web_Api\Api.Data\bin\Debug\net5.0\Api.Data.pdb
+C:\Users\misho\source\repos\Loan app\Loan_Web_Api\Api.Data\bin\Debug\net5.0\Api.Domain.dll
+C:\Users\misho\source\repos\Loan app\Loan_Web_Api\Api.Data\bin\Debug\net5.0\Api.Domain.pdb
+C:\Users\misho\source\repos\Loan app\Loan_Web_Api\Api.Data\obj\Debug\net5.0\Api.Data.csproj.AssemblyReference.cache
+C:\Users\misho\source\repos\Loan app\Loan_Web_Api\Api.Data\obj\Debug\net5.0\Api.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\misho\source\repos\Loan app\Loan_Web_Api\Api.Data\obj\Debug\net5.0\Api.Data.AssemblyInfoInputs.cache
+C:\Users\misho\source\repos\Loan app\Loan_Web_Api\Api.Data\obj\Debug\net5.0\Api.Data.AssemblyInfo.cs
+C:\Users\misho\source\repos\Loan app\Loan_Web_Api\Api.Data\obj\Debug\net5.0\Api.Data.csproj.CoreCompileInputs.cache
+C:\Users\misho\source\repos\Loan app\Loan_Web_Api\Api.Data\obj\Debug\net5.0\Api.Data.csproj.CopyComplete
+C:\Users\misho\source\repos\Loan app\Loan_Web_Api\Api.Data\obj\Debug\net5.0\Api.Data.dll
+C:\Users\misho\source\repos\Loan app\Loan_Web_Api\Api.Data\obj\Debug\net5.0\refint\Api.Data.dll
+C:\Users\misho\source\repos\Loan app\Loan_Web_Api\Api.Data\obj\Debug\net5.0\Api.Data.pdb
+C:\Users\misho\source\repos\Loan app\Loan_Web_Api\Api.Data\obj\Debug\net5.0\Api.Data.genruntimeconfig.cache
+C:\Users\misho\source\repos\Loan app\Loan_Web_Api\Api.Data\obj\Debug\net5.0\ref\Api.Data.dll

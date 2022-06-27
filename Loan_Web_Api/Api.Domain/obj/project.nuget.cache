@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4cRlRdAguXqwRpJSqf9fmmrtjSmuRyTj1IkPQ2ZatVOWjc8S7KzBWYAzU+q0gOAkfzIbb1PsDBLnwIlDgHNVBQ==",
+  "dgSpecHash": "qQhQpC29uNGcidJl91uIGLuJvTG7CCQ7pXhdqiqY/Kg4820uzCm9KBBpywUPn8IWLW7UhgM9CTi380hNHCtGdw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\misho\\source\\repos\\Homeworks\\Loan_Web_Api\\Api.Domain\\Api.Domain.csproj",
+  "projectFilePath": "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Api.Domain\\Api.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\misho\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\misho\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.17\\microsoft.aspnetcore.authentication.jwtbearer.5.0.17.nupkg.sha512",
