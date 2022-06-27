@@ -8,8 +8,10 @@ namespace Loan_Web_Api.Services
 {
     public class LoanValidation : AbstractValidator<AddLoanModel>
     {
-        public LoanValidation()
+        UserContext _context;
+        public LoanValidation(UserContext context)
         {
+            _context = context;
 
 
             RuleFor(AddLoanModel => AddLoanModel.LoanType)
@@ -34,6 +36,16 @@ namespace Loan_Web_Api.Services
             else return false;
 
         }
+        public AddLoanModel ConvertTovalidation(Loan loan)
+        {
+            AddLoanModel loanModel = new AddLoanModel();
+            loanModel.Currency = loan.LoanCurrency;
+            loanModel.Amount = loan.LoanAmount;
+            loanModel.LoanType = loan.LoanType;
+            loanModel.LoanTime= loan.LoanTime;
+            
+            return loanModel;
+        }
         private bool choosecurrency(string currency)
         {
             List<string> choosecurrency = new List<string>()
@@ -51,6 +63,7 @@ namespace Loan_Web_Api.Services
                 return false;
             }
         }
+
 
 
     }

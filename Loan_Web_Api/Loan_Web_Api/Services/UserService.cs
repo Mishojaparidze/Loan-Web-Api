@@ -18,9 +18,9 @@ namespace Loan_Web_Api.Services
     {
         User Register(UserRegisterModel user);
         User Login(User user);
-        string TokenGenerator(User user);
         User Authenticate(string username, string password);
         User GetUserInfo(User user);
+        string TokenGenerator(User user);
 
 
     }
