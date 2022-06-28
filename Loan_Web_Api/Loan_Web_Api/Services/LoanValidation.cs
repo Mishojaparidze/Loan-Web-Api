@@ -19,7 +19,10 @@ namespace Loan_Web_Api.Services
                     .Must(LoanType).WithMessage($"Invalid Loan Type. Loan  must be one of the following: {Type.FastLoan},{Type.CarLoan}{Type.BuyWithCredit}");
             RuleFor(AddLoanModel => AddLoanModel.Currency).NotEmpty().NotNull().Must(choosecurrency).WithMessage
                 ($"Invalid Loan Currency. Loan Currency must be one of the following: {Currency.GEL},{Currency.USD}");
-            RuleFor(AddLoanModel => AddLoanModel.Amount).NotEmpty().NotNull().LessThan(1000000).GreaterThan(100).WithMessage("Amount must be greater than 100 and less than 1 000 000");
+            RuleFor(AddLoanModel => AddLoanModel.Amount).NotEmpty().NotNull().LessThan(1000000).GreaterThan(100).WithMessage
+                ("Amount must be greater than 100 and less than 1 000 000");
+            RuleFor(AddLoanModel => AddLoanModel.LoanTime.Days).NotEmpty().NotNull().LessThan(1825).GreaterThan(180).WithMessage
+                ("Loan time frame should be from minimum 6 month to 5 years maximum");
         }
 
         private bool LoanType(string type)
@@ -63,8 +66,5 @@ namespace Loan_Web_Api.Services
                 return false;
             }
         }
-
-
-
     }
 }

@@ -1,12 +1,20 @@
 ﻿using Api.Data;
 using Api.Domain;
 using FluentValidation.Results;
+using FluentValidation;
+using Loan_Web_Api.Helpers;
 using Loan_Web_Api.Models;
 using Loan_Web_Api.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using System.Threading.Tasks;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using System.Security.Claims;
+using System;
 
 namespace Loan_Web_Api.Controllers
 {
@@ -16,19 +24,28 @@ namespace Loan_Web_Api.Controllers
     {
         private readonly UserContext _context;
         private IUserService _userService;
-        public UserController(IUserService userService, UserContext context)
+        private readonly AppSettings _appSettings;
+        
+
+        public UserController(IUserService userService, UserContext context, IOptions<AppSettings> appSettings)
         {
             _context = context;
             _userService = userService;
+            _appSettings = appSettings.Value;
+            
         }
+
         [AllowAnonymous]
         [HttpPost("login")]
-        public IActionResult Login(string username, string password)
+        public IActionResult Login(UserLoginModel user)
         {
-            var user = _userService.Authenticate(username, password);
-            if (user == null) return BadRequest("You entered incorect Username or a Password, Please double check and try it again later.");
-            _userService.Login(user);
-            return Ok("Success!");
+            var userLogin = _userService.Login(user);
+            if (userLogin == null)
+            {
+                return BadRequest("Password or Username was Empty");
+            }
+            var token= GenerateToken(user);
+            return Ok(new{Username = userLogin.Username, token});
         }
 
         [AllowAnonymous]
@@ -47,7 +64,24 @@ namespace Loan_Web_Api.Controllers
             {
                 return BadRequest(result);
             }
-        }
+         }
 
+        private string GenerateToken(UserLoginModel user)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, user.UserName)
+                }),
+                Expires = DateTime.UtcNow.AddDays(1),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            var tokenString = tokenHandler.WriteToken(token);
+            return tokenString;
+        }
     }
 }

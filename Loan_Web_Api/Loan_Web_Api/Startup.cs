@@ -31,11 +31,7 @@ namespace Loan_Web_Api
                  .EnableSensitiveDataLogging()
                  .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
 
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<ILoanService, LoanService>();
-            services.AddScoped<IAccountantService, AccountantService>();
-            services.AddCors();
-            services.AddControllers();
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Loan-Web-Api", Version = "v1" });
@@ -62,7 +58,11 @@ namespace Loan_Web_Api
                            ValidateAudience = false
                        };
                    });
-
+            services.AddCors();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ILoanService, LoanService>();
+            services.AddScoped<IAccountantService, AccountantService>();
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -78,9 +78,9 @@ namespace Loan_Web_Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
+            
 
 
             app.UseEndpoints(endpoints =>

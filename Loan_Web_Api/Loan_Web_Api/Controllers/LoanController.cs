@@ -10,6 +10,8 @@ using FluentValidation;
 using FluentValidation.Results;
 using System.Threading.Tasks;
 using System.Linq;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Loan_Web_Api.Controllers
 {
@@ -25,33 +27,38 @@ namespace Loan_Web_Api.Controllers
             _context = context;
             _loanService = loanService;
         }
-
-        internal int getUserid()
-        {
-            var claimsIdentity = this.User.Identity as ClaimsIdentity;
-            var userIdString = claimsIdentity.FindFirst(ClaimTypes.Name)?.Value;
-            var userId = Convert.ToInt32(userIdString);
-            return userId;
-        }
-
+        
         [Authorize(Roles = Roles.User)]
         [HttpPost("addloan")]
         public IActionResult AddLoan(AddLoanModel addloan)
         {
             LoanValidation validation = new LoanValidation(_context);
             var result = validation.Validate(addloan);
-            if (result.IsValid)
+            if (!result.IsValid)
             {
-                var userId = getUserid();
-                if (_context.Users.Find(userId).IsBlocked == true)
-                {
-                    return Unauthorized("User is blocked for Loans");
-                }
-                _loanService.AddLoan(addloan,userId);
-                return Ok(result);
+                return BadRequest(result);
             }
-            return BadRequest(result);
-
+            var getUserId = userId();
+            if (_context.Users.Find(getUserId).IsBlocked)
+            {
+                return Unauthorized("it's blocked");
+            }
+            _loanService.AddLoan(addloan, getUserId);
+            return Ok(result);
+        }
+        internal int userId()
+        {
+            var claimsId = this.User.Identity as ClaimsIdentity;
+            var userIdString = claimsId.ToString();
+            var userId = Convert.ToInt32(userIdString);
+            return userId;
+        }
+        internal int getUserid()
+        {
+            var claimsIdentity = this.User.Identity as ClaimsIdentity;
+            var userIdString = claimsIdentity.FindFirst(ClaimTypes.Name)?.Value;
+            var userId = Convert.ToInt32(userIdString);
+            return userId;
         }
 
         [Authorize(Roles = Roles.User)]
@@ -81,7 +88,7 @@ namespace Loan_Web_Api.Controllers
             return Ok("Loan Deleted");
         }
 
-            [Authorize(Roles = Roles.User)]
+        [Authorize(Roles = Roles.User)]
         [HttpPut("ModifyLoan")]
         public IActionResult UpdateOwnLoan(ModifyLoanModel modify)
         {
@@ -105,7 +112,6 @@ namespace Loan_Web_Api.Controllers
                 _context.Loans.Update(tempLoan);
                 _context.SaveChanges();
                 return Ok("Loan Updated");
-                
             }
             return BadRequest(results);
         }

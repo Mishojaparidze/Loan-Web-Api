@@ -9,7 +9,5 @@ namespace Loan_Web_Api.Models
         public string Currency { get; set; }
         public string LoanType { get; set; }
         public TimeSpan LoanTime { get; set; }
-
-
     }
 }
