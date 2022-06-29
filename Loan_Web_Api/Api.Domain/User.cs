@@ -25,9 +25,6 @@ namespace Api.Domain
         public string Role { get; set; }
         public bool IsBlocked { get; set; }
         public string Token { get; set; }
-        
         public List<Loan> Loans { get; set; } = new List<Loan>();
-
-
     }
 }

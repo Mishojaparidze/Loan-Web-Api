@@ -15,6 +15,7 @@ namespace Api.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Loan> Loans { get; set; }
         public DbSet<Accountant> Accountants { get; set; }
-        
+        public DbSet<Loggs> Loggs { get; set; }
+
     }
 }

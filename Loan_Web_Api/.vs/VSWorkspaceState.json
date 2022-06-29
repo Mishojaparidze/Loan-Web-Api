@@ -5,6 +5,6 @@
     "\\Api.Domain",
     "\\Loan_Web_Api"
   ],
-  "SelectedNode": "\\Loan_Web_Api\\Startup.cs",
+  "SelectedNode": "\\Loan_Web_Api\\appsettings.json",
   "PreviewInSolutionExplorer": false
 }

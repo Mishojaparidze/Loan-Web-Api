@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Api.Data.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20220627095642_Mig777")]
-    partial class Mig777
+    [Migration("20220629005806_mig400")]
+    partial class mig400
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -63,8 +63,8 @@ namespace Api.Data.Migrations
                     b.Property<string>("LoanStatus")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<TimeSpan>("LoanTime")
-                        .HasColumnType("time");
+                    b.Property<int>("LoanTime")
+                        .HasColumnType("int");
 
                     b.Property<string>("LoanType")
                         .HasColumnType("nvarchar(max)");

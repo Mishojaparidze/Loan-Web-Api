@@ -8,18 +8,19 @@ namespace Api.Domain
 {
     public class Loan
     {
+        public Loan()
+        {
+            LoanStatus = Status.Processing;
+        }
         public int Id { get; set; }
         public int UserId { get; set; }
         public int LoanAmount { get; set; }
         public string LoanCurrency { get; set; }
         public string LoanStatus { get; set; }  
         public string LoanType { get; set; } 
-        public TimeSpan LoanTime { get; set; }
+        public int LoanTime { get; set; }
         public User User { get; set; }
-        public Loan()
-        {
-            LoanStatus = Status.Processing;
-        }
+        
     }
 
 

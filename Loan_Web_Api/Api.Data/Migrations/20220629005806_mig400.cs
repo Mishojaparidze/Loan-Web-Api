@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Api.Data.Migrations
 {
-    public partial class Mig777 : Migration
+    public partial class mig400 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -61,7 +60,7 @@ namespace Api.Data.Migrations
                     LoanCurrency = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LoanStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LoanType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LoanTime = table.Column<TimeSpan>(type: "time", nullable: false)
+                    LoanTime = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

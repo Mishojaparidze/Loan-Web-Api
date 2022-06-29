@@ -61,8 +61,8 @@ namespace Api.Data.Migrations
                     b.Property<string>("LoanStatus")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<TimeSpan>("LoanTime")
-                        .HasColumnType("time");
+                    b.Property<int>("LoanTime")
+                        .HasColumnType("int");
 
                     b.Property<string>("LoanType")
                         .HasColumnType("nvarchar(max)");
