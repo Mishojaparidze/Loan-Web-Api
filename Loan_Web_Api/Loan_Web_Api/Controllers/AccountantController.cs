@@ -4,6 +4,7 @@ using Loan_Web_Api.Models;
 using Loan_Web_Api.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace Loan_Web_Api.Controllers
@@ -15,10 +16,12 @@ namespace Loan_Web_Api.Controllers
     {
         private readonly UserContext _context;
         private IAccountantService _accountantService;
-        public AccountantController(UserContext context, IAccountantService accountantService)
+        private readonly ILogger<AccountantController> _loggs;
+        public AccountantController(UserContext context, IAccountantService accountantService, ILogger<AccountantController> loggs)
         {
             _context = context;
-            _accountantService = accountantService; 
+            _accountantService = accountantService;
+            _loggs = loggs;
         }
 
         [HttpGet("GetLoanByID")]
@@ -26,20 +29,34 @@ namespace Loan_Web_Api.Controllers
         {
             if (_context.Users.Find(loanId.LoanId) == null)
             {
+                _loggs.LogError("404 not found");
                 return NotFound("404 not found");
             }
             _accountantService.GetLoanByID(loanId.LoanId);
+
             return Ok("This is the Loan you were looking for:");
         }
 
         [HttpGet("ModifyLoan")]
-        public async Task<ActionResult<Loan>> ModifyLoan(LoanIdModel loanId)
+        public async Task<ActionResult<Loan>> ModifyLoan(ModifyLoanModel modifyLoan)
         {
-            if (_context.Users.Find(loanId.LoanId) == null)
+            if (_context.Users.Find(modifyLoan.LoanId) == null)
             {
+                _loggs.LogError("404 not found");
                 return NotFound("404 not found");
             }
-            _accountantService.ModifyLoan(loanId.LoanId);
+
+            LoanValidation validate = new LoanValidation(_context);
+            var tempLoan = _accountantService.ModifyLoan(modifyLoan.LoanId);
+            var verifiableLoan = validate.ConvertTovalidation(tempLoan);
+            var result = validate.Validate(verifiableLoan);
+            if (!result.IsValid)
+            {
+                return BadRequest(result);
+            }
+            _accountantService.ModifyLoan(modifyLoan.LoanId);
+            _context.SaveChanges();
+            
             return Ok("This Loan is Updated");
         }
 
@@ -48,9 +65,10 @@ namespace Loan_Web_Api.Controllers
         {
             if (_context.Users.Find(loanId.LoanId) == null)
             {
+                _loggs.LogError("404 not found");
                 return NotFound("404 not found");
             }
-            _accountantService.DeleteLoanById(loanId.LoanId);
+             _accountantService.DeleteLoanById(loanId.LoanId);
             return Ok("This Loan is Deleted");
         }
 
@@ -59,6 +77,7 @@ namespace Loan_Web_Api.Controllers
         {
             if (_context.Users.Find(userId.UserId) == null)
             {
+                _loggs.LogError("404 not found");
                 return NotFound("404 not found");
             }
              _accountantService.BlockUserForLoan(userId.UserId);
@@ -69,6 +88,7 @@ namespace Loan_Web_Api.Controllers
         {
             if (_context.Users.Find(userId.UserId) == null)
             {
+                _loggs.LogError("404 not found");
                 return NotFound("404 not found");
             }
             _accountantService.UnblockUser(userId.UserId);

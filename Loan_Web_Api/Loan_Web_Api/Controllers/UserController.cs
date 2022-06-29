@@ -15,6 +15,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Security.Claims;
 using System;
+using Microsoft.Extensions.Logging;
 
 namespace Loan_Web_Api.Controllers
 {
@@ -25,13 +26,15 @@ namespace Loan_Web_Api.Controllers
         private readonly UserContext _context;
         private IUserService _userService;
         private readonly AppSettings _appSettings;
-        
+        private readonly ILogger<UserController> _loggs;
 
-        public UserController(IUserService userService, UserContext context, IOptions<AppSettings> appSettings)
+
+        public UserController(IUserService userService, UserContext context, IOptions<AppSettings> appSettings, ILogger<UserController> loggs)
         {
             _context = context;
             _userService = userService;
             _appSettings = appSettings.Value;
+            _loggs = loggs;
             
         }
 
@@ -44,8 +47,8 @@ namespace Loan_Web_Api.Controllers
             {
                 return BadRequest("Password or Username was Empty");
             }
-            var token= GenerateToken(user);
-            return Ok(new{Username = userLogin.Username, token});
+            var token= GenerateToken(userLogin);
+            return Ok(new{Username = userLogin.Username,userRole=userLogin.Role, token });
         }
 
         [AllowAnonymous]
@@ -58,7 +61,7 @@ namespace Loan_Web_Api.Controllers
             {
                 _userService.Register(registerData);
                 await _context.SaveChangesAsync();
-                return Ok();
+                return Ok("User Created");
             }
             else 
             {
@@ -66,7 +69,7 @@ namespace Loan_Web_Api.Controllers
             }
          }
 
-        private string GenerateToken(UserLoginModel user)
+        private string GenerateToken(User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
@@ -74,9 +77,12 @@ namespace Loan_Web_Api.Controllers
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.UserName)
+                    new Claim(ClaimTypes.Name, user.Username),
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                    new Claim(ClaimTypes.Role, user.Role)
+
                 }),
-                Expires = DateTime.UtcNow.AddDays(1),
+                Expires = DateTime.UtcNow.AddDays(5),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);

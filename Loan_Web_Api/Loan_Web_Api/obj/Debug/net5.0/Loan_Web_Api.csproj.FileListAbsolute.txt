@@ -158,3 +158,6 @@ C:\Users\misho\source\repos\Loan app\Loan_Web_Api\Loan_Web_Api\obj\Debug\net5.0\
 C:\Users\misho\source\repos\Loan app\Loan_Web_Api\Loan_Web_Api\obj\Debug\net5.0\Loan_Web_Api.pdb
 C:\Users\misho\source\repos\Loan app\Loan_Web_Api\Loan_Web_Api\obj\Debug\net5.0\Loan_Web_Api.genruntimeconfig.cache
 C:\Users\misho\source\repos\Loan app\Loan_Web_Api\Loan_Web_Api\obj\Debug\net5.0\ref\Loan_Web_Api.dll
+C:\Users\misho\source\repos\Loan app\Loan_Web_Api\Loan_Web_Api\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\misho\source\repos\Loan app\Loan_Web_Api\Loan_Web_Api\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\misho\source\repos\Loan app\Loan_Web_Api\Loan_Web_Api\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

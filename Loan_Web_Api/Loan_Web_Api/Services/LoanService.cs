@@ -24,19 +24,20 @@ namespace Loan_Web_Api.Services
             _context = context;
             _appSettings = appSettings.Value;
         }
-
         public Loan AddLoan(AddLoanModel loan, int userId)
         {
-            var addNewLoan = new Loan();
-            addNewLoan.UserId = userId;
-            addNewLoan.LoanType = loan.LoanType;
-            addNewLoan.LoanCurrency = loan.Currency;
-            addNewLoan.LoanAmount = loan.Amount;
-            addNewLoan.LoanTime = loan.LoanTime;
-            _context.Loans.Add(addNewLoan);
+            var newLoan=new Loan();
+            newLoan.UserId = userId;
+            newLoan.LoanType=loan.LoanType;
+            newLoan.LoanCurrency = loan.Currency;
+            newLoan.LoanAmount = loan.Amount;
+            newLoan.LoanTime = loan.LoanTime;
+            _context.Loans.Add(newLoan);
             _context.SaveChanges();
-            return addNewLoan;
+            return newLoan;
         }
+
+        
 
         public Loan ModifyLoan(ModifyLoanModel modify)
         {
@@ -65,7 +66,7 @@ namespace Loan_Web_Api.Services
             { 
                 tempLoan.LoanAmount = _context.Loans.Where(loan => loan.Id == modify.LoanId).FirstOrDefault().LoanAmount;
             }
-            if (modify.LoanTime.TotalHours>0)
+            if (modify.LoanTime>0)
             {
                 tempLoan.LoanTime = modify.LoanTime;
             }

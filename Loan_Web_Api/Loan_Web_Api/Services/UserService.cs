@@ -18,7 +18,7 @@ namespace Loan_Web_Api.Services
     {
         User Login(UserLoginModel login);
         User Register(UserRegisterModel user);       
-        User GetUserInfo(User user);
+        User GetUserInfo(int id);
     }
     public class UserService: IUserService
     {
@@ -61,9 +61,12 @@ namespace Loan_Web_Api.Services
             return user;
         }
 
-        public User GetUserInfo(User user)
+        public User GetUserInfo(int id)
         {
-            throw new NotImplementedException();
+            var user = _context.Users.FirstOrDefault(x => x.Id == id);
+
+            return user;
         }
+       
     }
 }

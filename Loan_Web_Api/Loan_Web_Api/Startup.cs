@@ -27,16 +27,25 @@ namespace Loan_Web_Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<UserContext>(opt =>
-              opt.UseSqlServer(Configuration.GetConnectionString("Loan-Web-Api"))
-                 .EnableSensitiveDataLogging()
-                 .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
+           opt.UseSqlServer(Configuration.GetConnectionString("Loan-Web-Api"))
+           .EnableSensitiveDataLogging()
+           .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
 
-            
+            services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Loan-Web-Api", Version = "v1" });
             });
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ILoanService, LoanService>();
+            services.AddScoped<IAccountantService, AccountantService>();
 
+
+            //Handles reference loop exception
+            services.AddControllers().AddNewtonsoftJson(options =>
+            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            //Token section
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
             var appSettings = appSettingsSection.Get<AppSettings>();
@@ -58,11 +67,7 @@ namespace Loan_Web_Api
                            ValidateAudience = false
                        };
                    });
-            services.AddCors();
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<ILoanService, LoanService>();
-            services.AddScoped<IAccountantService, AccountantService>();
-            services.AddControllers();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

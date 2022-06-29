@@ -21,7 +21,7 @@ namespace Loan_Web_Api.Services
                 ($"Invalid Loan Currency. Loan Currency must be one of the following: {Currency.GEL},{Currency.USD}");
             RuleFor(AddLoanModel => AddLoanModel.Amount).NotEmpty().NotNull().LessThan(1000000).GreaterThan(100).WithMessage
                 ("Amount must be greater than 100 and less than 1 000 000");
-            RuleFor(AddLoanModel => AddLoanModel.LoanTime.Days).NotEmpty().NotNull().LessThan(1825).GreaterThan(180).WithMessage
+            RuleFor(AddLoanModel => AddLoanModel.LoanTime).NotEmpty().NotNull().LessThan(1825).GreaterThan(180).WithMessage
                 ("Loan time frame should be from minimum 6 month to 5 years maximum");
         }
 
@@ -29,15 +29,20 @@ namespace Loan_Web_Api.Services
         {
             List<string> loanTypes = new List<string>()
                 {
-                    Type.FastLoan.ToLower  (),
+                    Type.FastLoan.ToLower(),
                     Type.CarLoan.ToLower(),
                     Type.BuyWithCredit.ToLower(),
 
                 };
             var loanTypeLower = type.ToLower();
-            if (loanTypes.Contains(loanTypeLower)) return true;
-            else return false;
-
+            if (loanTypes.Contains(loanTypeLower))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         public AddLoanModel ConvertTovalidation(Loan loan)
         {
