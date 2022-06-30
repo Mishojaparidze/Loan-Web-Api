@@ -13,6 +13,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.Extensions.Logging;
+using Loan_Web_Api.Helpers;
 
 namespace Loan_Web_Api.Controllers
 {
@@ -33,8 +34,8 @@ namespace Loan_Web_Api.Controllers
         }
 
         [Authorize(Roles = "User")]
-        [HttpPost("addloan/{token}")]
-        public IActionResult AddLoan([FromBody]AddLoanModel addloan, string token)
+        [HttpPost("addloan")]
+        public IActionResult AddLoan([FromBody]AddLoanModel addloan)
         {
 
             LoanValidation validation = new LoanValidation(_context);
@@ -42,37 +43,53 @@ namespace Loan_Web_Api.Controllers
 
             if (!result.IsValid)
             {
+                foreach (var item  in(ErrorValidation.GettingError(result)))
+                {
+                    _loggs.LogError(item);
+                }
                 return BadRequest(result);
             }
-
+            Request.Headers.TryGetValue("Authorization", out var headerValue);
+            var token = headerValue.ToString();
+            if (_context.Users.Find(GetUserIdFromToken(token)).IsBlocked==true)
+            {
+                _loggs.LogError("Error,User is Blocked");
+            }
+            
             _loanService.AddLoan(addloan, GetUserIdFromToken(token));
             return Ok(addloan);
         }
 
 
         [Authorize(Roles = Roles.User)]
-        [HttpGet("getAllLoans/{token}")]
-        public IActionResult GetOwnLoans(string token)
+        [HttpGet("getAllLoans")]
+        public IActionResult GetOwnLoans()
         {
+            Request.Headers.TryGetValue("Authorization", out var headerValue);
+            var token = headerValue.ToString();
             var userId = GetUserIdFromToken(token);
             var loans = _context.Loans.Where(x=>x.UserId== userId);
             return Ok(loans);
         }
 
         [Authorize(Roles = Roles.User)]
-        [HttpDelete("DeleteLoan/{token}")]
-        public async Task<IActionResult> DeleteLoan(LoanIdModel model, string token)
+        [HttpDelete("DeleteLoan")]
+        public async Task<IActionResult> DeleteLoan(LoanIdModel model)
         {
+            Request.Headers.TryGetValue("Authorization", out var headerValue);
+            var token = headerValue.ToString();
             var userId = GetUserIdFromToken(token);
             IQueryable<Loan> ownLoans = _loanService.GetOwnLoans(userId);
             
             var loanToCheck = ownLoans.Where(loan => loan.Id == model.LoanId).FirstOrDefault();
             if (loanToCheck == null)
             {
+                _loggs.LogError("Loan 404 Not Found");
                 return NotFound("404 Not Found");
             }
             if (loanToCheck.LoanStatus != Status.Processing)
             {
+                _loggs.LogError("Loan is already processed!");
                 return Unauthorized("You can't modify,Loan is already processed!");
             }
             _loanService.DeleteLoan(model.LoanId);
@@ -80,7 +97,7 @@ namespace Loan_Web_Api.Controllers
         }
 
         [Authorize(Roles = Roles.User)]
-        [HttpPut("ModifyLoan/{token}")]
+        [HttpPut("ModifyLoan")]
         public IActionResult UpdateOwnLoan(ModifyLoanModel modify, string token)
         {
             LoanValidation validation = new LoanValidation(_context);
@@ -89,10 +106,12 @@ namespace Loan_Web_Api.Controllers
             tempLoan.UserId = userId;
             if (tempLoan.UserId != _context.Loans.Find(modify.LoanId).UserId)
             {
+                _loggs.LogError("not your loan");
                 return Unauthorized("You can't modify,this is not your Loan!");
             }
             if (tempLoan.LoanStatus != Status.Processing)
             {
+                _loggs.LogError("Loan is already processed");
                 return Unauthorized("You can't modify,Loan is already processed!");
             }
 

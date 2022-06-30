@@ -45,6 +45,7 @@ namespace Loan_Web_Api.Controllers
             var userLogin = _userService.Login(user);
             if (userLogin == null)
             {
+                _loggs.LogError("Password or Username was Empty");
                 return BadRequest("Password or Username was Empty");
             }
             var token= GenerateToken(userLogin);
@@ -59,6 +60,11 @@ namespace Loan_Web_Api.Controllers
             ValidationResult result=validation.Validate(registerData);
             if (result.IsValid)
             {
+                foreach (var item in (ErrorValidation.GettingError(result)))
+                {
+                    _loggs.LogError(item);
+                }
+                
                 _userService.Register(registerData);
                 await _context.SaveChangesAsync();
                 return Ok("User Created");

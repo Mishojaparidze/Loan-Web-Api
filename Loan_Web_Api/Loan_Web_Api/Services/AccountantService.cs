@@ -12,10 +12,11 @@ namespace Loan_Web_Api.Services
     public interface IAccountantService
     {
         public Loan DeleteLoanById(int loanId);
-        public Loan GetLoanByID(int loanId);
+        public Task<IQueryable<Loan>> GetLoanByID(int loanId);
         public Loan ModifyLoan(int loanId);
         public User BlockUserForLoan(int userId);
         public User UnblockUser(int userId);
+        //public User OpeningAccountantAccount();
     }
     public class AccountantService:IAccountantService
     {
@@ -27,9 +28,9 @@ namespace Loan_Web_Api.Services
             _appSettings = appSettings.Value;
         }
 
-        public Loan GetLoanByID(int loanId) 
+        public async Task<IQueryable<Loan>> GetLoanByID(int loanId) 
         {
-            return  _context.Loans.Find(loanId);
+            return _context.Loans.Where(x => x.UserId == loanId);
         }
 
 
@@ -67,5 +68,6 @@ namespace Loan_Web_Api.Services
             _context.SaveChangesAsync();
             return user;
         }
+       
     }
 }
