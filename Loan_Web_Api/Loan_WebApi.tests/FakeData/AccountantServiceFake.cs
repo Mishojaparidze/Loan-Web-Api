@@ -52,12 +52,42 @@ namespace Loan_WebApi.tests.FakeData
 
         public User BlockUserForLoan(int userId)
         {
-            throw new NotImplementedException();
+            User fakeUser = new User()
+            {
+                Id = 1,
+                Name = "Carmine",
+                Surname = "Falcone",
+                Age = 48,
+                MonthlySalary = 8500,
+                Username = "Carmine456",
+                Password = HashSettings.HashPassword("Falcone789!"),
+                Role = "Accountant",
+                IsBlocked = false,
+                Loans = new List<Loan>{ new Loan { Id = 2},
+            new Loan { Id = 3}}
+            };
+            fakeUser.IsBlocked = true;
+            return fakeUser;
         }
 
         public User UnblockUser(int userId)
         {
-            throw new NotImplementedException();
+            User fakeUser = new User()
+            {
+                Id = 1,
+                Name = "Carmine",
+                Surname = "Falcone",
+                Age = 48,
+                MonthlySalary = 8500,
+                Username = "Carmine456",
+                Password = HashSettings.HashPassword("Falcone789!"),
+                Role = "Accountant",
+                IsBlocked = false,
+                Loans = new List<Loan>{ new Loan { Id = 2},
+            new Loan { Id = 3}}
+            };
+            fakeUser.IsBlocked = false;
+            return fakeUser;
         }
 
         public async Task<User> OpenAccountantAccount()
