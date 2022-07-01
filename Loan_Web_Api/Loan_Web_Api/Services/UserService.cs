@@ -30,7 +30,7 @@ namespace Loan_Web_Api.Services
         }
         public User Login(UserLoginModel login)
         {
-
+            try { 
             if (string.IsNullOrEmpty(login.UserName) || (string.IsNullOrEmpty(login.Password)))
             {
                 return null;
@@ -45,11 +45,17 @@ namespace Loan_Web_Api.Services
                 return null;
             }
             return user;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
 
         public User Register(UserRegisterModel registerData)
-        { 
+        {
+            try { 
             User user = new User();
             user.Name= registerData.Name;
             user.Surname= registerData.Surname;
@@ -59,13 +65,24 @@ namespace Loan_Web_Api.Services
             user.MonthlySalary=registerData.MonthlySalary;
             _context.Users.Add(user);
             return user;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public User GetUserInfo(int id)
         {
+            try { 
             var user = _context.Users.FirstOrDefault(x => x.Id == id);
 
             return user;
+            }
+            catch
+            {
+                return null;
+            }
         }
        
     }

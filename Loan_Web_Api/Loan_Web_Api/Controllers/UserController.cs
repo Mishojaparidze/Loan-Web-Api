@@ -27,15 +27,16 @@ namespace Loan_Web_Api.Controllers
         private IUserService _userService;
         private readonly AppSettings _appSettings;
         private readonly ILogger<UserController> _loggs;
+        private ITokenGen _token;
 
 
-        public UserController(IUserService userService, UserContext context, IOptions<AppSettings> appSettings, ILogger<UserController> loggs)
+        public UserController(IUserService userService, UserContext context, IOptions<AppSettings> appSettings, ILogger<UserController> loggs, ITokenGen token)
         {
             _context = context;
             _userService = userService;
             _appSettings = appSettings.Value;
             _loggs = loggs;
-            
+            _token = token;
         }
 
         [AllowAnonymous]
@@ -48,7 +49,7 @@ namespace Loan_Web_Api.Controllers
                 _loggs.LogError("Password or Username was Empty");
                 return BadRequest("Password or Username was Empty");
             }
-            var token= GenerateToken(userLogin);
+            var token= _token.GenerateToken(userLogin);
             return Ok(new{Username = userLogin.Username,userRole=userLogin.Role, token });
         }
 
@@ -75,7 +76,7 @@ namespace Loan_Web_Api.Controllers
             }
          }
 
-        private string GenerateToken(User user)
+       /* private string GenerateToken(User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
@@ -94,6 +95,6 @@ namespace Loan_Web_Api.Controllers
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var tokenString = tokenHandler.WriteToken(token);
             return tokenString;
-        }
+        }*/
     }
 }

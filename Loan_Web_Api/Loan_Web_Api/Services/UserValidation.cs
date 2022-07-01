@@ -22,13 +22,19 @@ namespace Loan_Web_Api.Services
                 ("Your age should be less than 80 to apply for a loan");
         }
         private bool distinctUserName(string userName)
-        { 
+        {
+            try { 
             var userNameCheck=_context.Users.Where(x=>x.Username.ToUpper()==userName.ToUpper()).FirstOrDefault();
             if (userNameCheck == null)
             {
                 return true;
             }
             else
+            {
+                return false;
+            }
+            }
+            catch
             {
                 return false;
             }

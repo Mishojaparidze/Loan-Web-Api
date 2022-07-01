@@ -26,22 +26,30 @@ namespace Loan_Web_Api.Services
         }
         public Loan AddLoan(AddLoanModel loan, int userId)
         {
-            var newLoan=new Loan();
-            newLoan.UserId = userId;
-            newLoan.LoanType=loan.LoanType;
-            newLoan.LoanCurrency = loan.Currency;
-            newLoan.LoanAmount = loan.Amount;
-            newLoan.LoanTime = loan.LoanTime;
-            _context.Loans.Add(newLoan);
-            _context.SaveChanges();
-            return newLoan;
+            try
+            {
+                var newLoan = new Loan();
+                newLoan.UserId = userId;
+                newLoan.LoanType = loan.LoanType;
+                newLoan.LoanCurrency = loan.Currency;
+                newLoan.LoanAmount = loan.Amount;
+                newLoan.LoanTime = loan.LoanTime;
+                _context.Loans.Add(newLoan);
+                _context.SaveChanges();
+                return newLoan;
+            }
+            
+            catch 
+            {
+                return null;
+            }
         }
 
         
 
         public Loan ModifyLoan(ModifyLoanModel modify)
         {
-            var tempLoan = new Loan() { Id = modify.LoanId };
+            try{var tempLoan = new Loan() { Id = modify.LoanId };
             if (modify.LoanType != null)
             {
                 tempLoan.LoanType = modify.LoanType;
@@ -75,6 +83,11 @@ namespace Loan_Web_Api.Services
                 tempLoan.LoanTime = _context.Loans.Where(loan => loan.Id == modify.LoanId).FirstOrDefault().LoanTime;
             }
             return tempLoan;
+            }
+            catch
+            {
+                return null;
+            }
         }
         public IQueryable<Loan> GetOwnLoans(int userId)
         {
@@ -83,10 +96,17 @@ namespace Loan_Web_Api.Services
 
         public Loan DeleteLoan(int loanId)
         {
+            try { 
             var deleteLoan = _context.Loans.Find(loanId);
             _context.Loans.Remove(deleteLoan);
             _context.SaveChanges();
             return deleteLoan;
+            }
+            catch
+            {
+                return null;
+            }
         }
+
     }
 }

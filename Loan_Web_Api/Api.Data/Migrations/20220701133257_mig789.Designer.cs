@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Api.Data.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20220629005806_mig400")]
-    partial class mig400
+    [Migration("20220701133257_mig789")]
+    partial class mig789
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -77,6 +77,24 @@ namespace Api.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Loans");
+                });
+
+            modelBuilder.Entity("Api.Domain.Loggs", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Values")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Loggs");
                 });
 
             modelBuilder.Entity("Api.Domain.User", b =>

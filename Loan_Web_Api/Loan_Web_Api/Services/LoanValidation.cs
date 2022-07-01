@@ -27,25 +27,34 @@ namespace Loan_Web_Api.Services
 
         private bool LoanType(string type)
         {
-            List<string> loanTypes = new List<string>()
+            try
+            {
+                List<string> loanTypes = new List<string>()
                 {
                     Type.FastLoan.ToLower(),
                     Type.CarLoan.ToLower(),
                     Type.BuyWithCredit.ToLower(),
 
                 };
-            var loanTypeLower = type.ToLower();
-            if (loanTypes.Contains(loanTypeLower))
-            {
-                return true;
+                var loanTypeLower = type.ToLower();
+                if (loanTypes.Contains(loanTypeLower))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            
             }
-            else
+            catch 
             {
                 return false;
             }
         }
         public AddLoanModel ConvertTovalidation(Loan loan)
         {
+            try { 
             AddLoanModel loanModel = new AddLoanModel();
             loanModel.Currency = loan.LoanCurrency;
             loanModel.Amount = loan.LoanAmount;
@@ -53,9 +62,15 @@ namespace Loan_Web_Api.Services
             loanModel.LoanTime= loan.LoanTime;
             
             return loanModel;
+            }
+            catch
+            {
+                return null;
+            }
         }
         private bool choosecurrency(string currency)
         {
+            try { 
             List<string> choosecurrency = new List<string>()
                 {
                     Currency.GEL.ToLower(),
@@ -67,6 +82,11 @@ namespace Loan_Web_Api.Services
                 return true;
             }
             else
+            {
+                return false;
+            }
+            }
+            catch
             {
                 return false;
             }

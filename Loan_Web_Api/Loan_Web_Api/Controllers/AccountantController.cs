@@ -1,15 +1,17 @@
 ﻿using Api.Data;
 using Api.Domain;
+using Loan_Web_Api.Helpers;
 using Loan_Web_Api.Models;
 using Loan_Web_Api.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using System.Threading.Tasks;
 
 namespace Loan_Web_Api.Controllers
 {
-    //[Authorize(Roles = Roles.Accountant)]
+    [Authorize(Roles = Roles.Accountant)]
     [Route("api/[controller]")]
     [ApiController]
     public class AccountantController : ControllerBase
@@ -17,11 +19,32 @@ namespace Loan_Web_Api.Controllers
         private readonly UserContext _context;
         private IAccountantService _accountantService;
         private readonly ILogger<AccountantController> _loggs;
-        public AccountantController(UserContext context, IAccountantService accountantService, ILogger<AccountantController> loggs)
+        private ILoanService _loanService;
+        private IUserService _userService;
+        private ITokenGen _token;
+        public AccountantController(UserContext context, IAccountantService accountantService, ILogger<AccountantController> loggs, ILoanService loanService, IUserService userService, ITokenGen token)
         {
             _context = context;
             _accountantService = accountantService;
             _loggs = loggs;
+            _loanService = loanService;
+            _userService = userService;
+            _token = token; 
+        }
+        [AllowAnonymous]
+        [HttpPost("generateaccountant")]
+        public async Task<IActionResult> OpenAccountantAccount()
+        {
+            
+            
+            var accountant = await _accountantService.OpenAccountantAccount();
+            var tokenString = _token.GenerateToken(accountant);
+            accountant.Token = tokenString;
+            _context.Users.Update(accountant);
+            _context.SaveChanges();
+            return Ok($"Accountant Credentials: Username: Carmine456" +
+                $"Password: Falcone789!" +
+                $"Token: {accountant.Token}");
         }
 
         [HttpGet("GetLoanByID")]

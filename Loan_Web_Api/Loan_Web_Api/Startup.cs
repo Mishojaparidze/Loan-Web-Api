@@ -39,6 +39,7 @@ namespace Loan_Web_Api
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ILoanService, LoanService>();
             services.AddScoped<IAccountantService, AccountantService>();
+            
 
 
             //Handles reference loop exception
