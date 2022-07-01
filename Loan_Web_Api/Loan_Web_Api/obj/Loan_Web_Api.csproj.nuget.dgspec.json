@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Loan_Web_Api\\Loan_Web_Api.csproj": {}
+    "C:\\Users\\misho\\source\\repos\\Web Api\\Loanapp\\Loan_Web_Api\\Loan_Web_Api\\Loan_Web_Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Api.Data\\Api.Data.csproj": {
+    "C:\\Users\\misho\\source\\repos\\Web Api\\Loanapp\\Loan_Web_Api\\Api.Data\\Api.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Api.Data\\Api.Data.csproj",
+        "projectUniqueName": "C:\\Users\\misho\\source\\repos\\Web Api\\Loanapp\\Loan_Web_Api\\Api.Data\\Api.Data.csproj",
         "projectName": "Api.Data",
-        "projectPath": "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Api.Data\\Api.Data.csproj",
+        "projectPath": "C:\\Users\\misho\\source\\repos\\Web Api\\Loanapp\\Loan_Web_Api\\Api.Data\\Api.Data.csproj",
         "packagesPath": "C:\\Users\\misho\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Api.Data\\obj\\",
+        "outputPath": "C:\\Users\\misho\\source\\repos\\Web Api\\Loanapp\\Loan_Web_Api\\Api.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\misho\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Api.Domain\\Api.Domain.csproj": {
-                "projectPath": "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Api.Domain\\Api.Domain.csproj"
+              "C:\\Users\\misho\\source\\repos\\Web Api\\Loanapp\\Loan_Web_Api\\Api.Domain\\Api.Domain.csproj": {
+                "projectPath": "C:\\Users\\misho\\source\\repos\\Web Api\\Loanapp\\Loan_Web_Api\\Api.Domain\\Api.Domain.csproj"
               }
             }
           }
@@ -86,14 +86,14 @@
         }
       }
     },
-    "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Api.Domain\\Api.Domain.csproj": {
+    "C:\\Users\\misho\\source\\repos\\Web Api\\Loanapp\\Loan_Web_Api\\Api.Domain\\Api.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Api.Domain\\Api.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\misho\\source\\repos\\Web Api\\Loanapp\\Loan_Web_Api\\Api.Domain\\Api.Domain.csproj",
         "projectName": "Api.Domain",
-        "projectPath": "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Api.Domain\\Api.Domain.csproj",
+        "projectPath": "C:\\Users\\misho\\source\\repos\\Web Api\\Loanapp\\Loan_Web_Api\\Api.Domain\\Api.Domain.csproj",
         "packagesPath": "C:\\Users\\misho\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Api.Domain\\obj\\",
+        "outputPath": "C:\\Users\\misho\\source\\repos\\Web Api\\Loanapp\\Loan_Web_Api\\Api.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\misho\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -164,14 +164,14 @@
         }
       }
     },
-    "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Loan_Web_Api\\Loan_Web_Api.csproj": {
+    "C:\\Users\\misho\\source\\repos\\Web Api\\Loanapp\\Loan_Web_Api\\Loan_Web_Api\\Loan_Web_Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Loan_Web_Api\\Loan_Web_Api.csproj",
+        "projectUniqueName": "C:\\Users\\misho\\source\\repos\\Web Api\\Loanapp\\Loan_Web_Api\\Loan_Web_Api\\Loan_Web_Api.csproj",
         "projectName": "Loan_Web_Api",
-        "projectPath": "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Loan_Web_Api\\Loan_Web_Api.csproj",
+        "projectPath": "C:\\Users\\misho\\source\\repos\\Web Api\\Loanapp\\Loan_Web_Api\\Loan_Web_Api\\Loan_Web_Api.csproj",
         "packagesPath": "C:\\Users\\misho\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Loan_Web_Api\\obj\\",
+        "outputPath": "C:\\Users\\misho\\source\\repos\\Web Api\\Loanapp\\Loan_Web_Api\\Loan_Web_Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\misho\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -188,8 +188,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Api.Data\\Api.Data.csproj": {
-                "projectPath": "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Api.Data\\Api.Data.csproj"
+              "C:\\Users\\misho\\source\\repos\\Web Api\\Loanapp\\Loan_Web_Api\\Api.Data\\Api.Data.csproj": {
+                "projectPath": "C:\\Users\\misho\\source\\repos\\Web Api\\Loanapp\\Loan_Web_Api\\Api.Data\\Api.Data.csproj"
               }
             }
           }

@@ -8421,11 +8421,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Loan_WebApi.tests\\Loan_WebApi.tests.csproj",
+      "projectUniqueName": "C:\\Users\\misho\\source\\repos\\Web Api\\Loanapp\\Loan_Web_Api\\Loan_WebApi.tests\\Loan_WebApi.tests.csproj",
       "projectName": "Loan_WebApi.tests",
-      "projectPath": "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Loan_WebApi.tests\\Loan_WebApi.tests.csproj",
+      "projectPath": "C:\\Users\\misho\\source\\repos\\Web Api\\Loanapp\\Loan_Web_Api\\Loan_WebApi.tests\\Loan_WebApi.tests.csproj",
       "packagesPath": "C:\\Users\\misho\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Loan_WebApi.tests\\obj\\",
+      "outputPath": "C:\\Users\\misho\\source\\repos\\Web Api\\Loanapp\\Loan_Web_Api\\Loan_WebApi.tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\misho\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -8442,8 +8442,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Loan_Web_Api\\Loan_Web_Api.csproj": {
-              "projectPath": "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Loan_Web_Api\\Loan_Web_Api.csproj"
+            "C:\\Users\\misho\\source\\repos\\Web Api\\Loanapp\\Loan_Web_Api\\Loan_Web_Api\\Loan_Web_Api.csproj": {
+              "projectPath": "C:\\Users\\misho\\source\\repos\\Web Api\\Loanapp\\Loan_Web_Api\\Loan_Web_Api\\Loan_Web_Api.csproj"
             }
           }
         }

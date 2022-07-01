@@ -5377,11 +5377,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Api.Domain\\Api.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\misho\\source\\repos\\Web Api\\Loanapp\\Loan_Web_Api\\Api.Domain\\Api.Domain.csproj",
       "projectName": "Api.Domain",
-      "projectPath": "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Api.Domain\\Api.Domain.csproj",
+      "projectPath": "C:\\Users\\misho\\source\\repos\\Web Api\\Loanapp\\Loan_Web_Api\\Api.Domain\\Api.Domain.csproj",
       "packagesPath": "C:\\Users\\misho\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\misho\\source\\repos\\Loan app\\Loan_Web_Api\\Api.Domain\\obj\\",
+      "outputPath": "C:\\Users\\misho\\source\\repos\\Web Api\\Loanapp\\Loan_Web_Api\\Api.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\misho\\AppData\\Roaming\\NuGet\\NuGet.Config",
