@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Loan_Web_Api.Controllers
 {
-    [Authorize(Roles = Roles.Accountant)]
+    //[Authorize(Roles = Roles.Accountant)]
     [Route("api/[controller]")]
     [ApiController]
     public class AccountantController : ControllerBase
@@ -25,16 +25,16 @@ namespace Loan_Web_Api.Controllers
         }
 
         [HttpGet("GetLoanByID")]
-        public async Task<ActionResult<Loan>> GetLoanByID(LoanIdModel loanId)
+        public async Task<ActionResult<Loan>> GetLoanByID(UserIdModel UserId)
         {
-            if (_context.Users.Find(loanId.LoanId) == null)
+            if (_context.Users.Find(UserId.UserId) == null)
             {
                 _loggs.LogError("404 not found");
                 return NotFound("404 not found");
             }
-            _accountantService.GetLoanByID(loanId.LoanId);
+            var loans = _accountantService.GetLoanByID(UserId.UserId);
 
-            return Ok("This is the Loan you were looking for:");
+            return Ok(loans);
         }
 
         [HttpGet("ModifyLoan")]

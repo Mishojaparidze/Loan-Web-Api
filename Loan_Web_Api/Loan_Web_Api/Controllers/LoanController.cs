@@ -98,9 +98,11 @@ namespace Loan_Web_Api.Controllers
 
         [Authorize(Roles = Roles.User)]
         [HttpPut("ModifyLoan")]
-        public IActionResult UpdateOwnLoan(ModifyLoanModel modify, string token)
+        public IActionResult UpdateOwnLoan(ModifyLoanModel modify)
         {
             LoanValidation validation = new LoanValidation(_context);
+            Request.Headers.TryGetValue("Authorization", out var headerValue);
+            var token = headerValue.ToString();
             var userId = GetUserIdFromToken(token);
             var tempLoan = _loanService.ModifyLoan(modify);
             tempLoan.UserId = userId;

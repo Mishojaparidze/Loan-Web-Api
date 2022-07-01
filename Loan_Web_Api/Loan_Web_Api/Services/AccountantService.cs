@@ -28,9 +28,9 @@ namespace Loan_Web_Api.Services
             _appSettings = appSettings.Value;
         }
 
-        public async Task<IQueryable<Loan>> GetLoanByID(int loanId) 
+        public async Task<IQueryable<Loan>> GetLoanByID(int userId) 
         {
-            return _context.Loans.Where(x => x.UserId == loanId);
+            return _context.Loans.Where(x => x.UserId == userId);
         }
 
 
